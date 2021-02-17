@@ -5,7 +5,7 @@ const User=require('../controller/user_controller');//fetching user controller f
 router.get('/',User.homepage);
 router.get('/user-feed',User.homefeed);
 router.get('/user-feed/last-page',User.homelastpage);
-// router.post('/sign-up',User.sign_up);
+
 
 
 module.exports=router;

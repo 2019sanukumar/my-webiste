@@ -1,11 +1,11 @@
 const express=require('express');
 const cookieParser=require('cookie-parser');//after installing cookie parser
 const app=express();
-const port=8800;
+const port=5000;
 const expressLayouts=require('express-ejs-layouts');//for layout
 const db=require('./config/mongoose');//require mongoose config
 
-app.use(express.urlencoded());//for encoding req 
+app.use(express.urlencoded({extended: true}));//for encoding req 
 app.use(cookieParser());//for cookie parser
 app.use(express.static('./assets'));//this will tell express to llok for static file in assets folder
 
