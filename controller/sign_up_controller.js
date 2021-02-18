@@ -16,15 +16,15 @@ module.exports.create_session=function(req,res)
         return res.redirect('back');
 
     }
-    User.findOne({email:req.body.email},function(err,user)
+    User.findOne({email:req.body.email},function(err,user)//here user is which is entred by the user
     {
         if(err){console.log('error in finding user'); return}
-        if(!user)
+        if(!user)//user doesn't exist
         {
-            User.create(req.body,function(err,user)
+            User.create(req.body,function(err,user)//setting stuff in models of user
             {
                 if(err){console.log('error in signingup the page',err);return}//ye print ho rhi
-                return res.redirect('/sign-in');
+                return res.redirect('/sign-in');// after succesful completeion
 
             });
 

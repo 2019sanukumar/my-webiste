@@ -7,6 +7,7 @@ module.exports.sign_in=function(req,res)
 /// moving to different branch
 module.exports.session=function(req,res)
 {
+    return res.redirect('/user');
 
     
 }
