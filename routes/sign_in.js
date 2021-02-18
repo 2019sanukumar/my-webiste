@@ -9,7 +9,8 @@ router.get('/',Sign_in.sign_in);
 router.post('/session',passport.authenticate(
     'local',
     {
-        failureredirect:'/sign-in'
+        failureRedirect:'/sign-in'//it will redirect to sing if password doesnot match
+        
     },
 
 ),Sign_in.session);

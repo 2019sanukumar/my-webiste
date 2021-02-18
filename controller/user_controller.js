@@ -1,3 +1,5 @@
+const User_detail=require('../models/user_detail');
+
 module.exports.homepage=function(req,res)
 {
     // return res.end('<h1>this is user homepage</h1>');
@@ -29,4 +31,27 @@ module.exports.user_detail=function(req,res)
     return res.render('user_detail',{
         title:"user_detail"
     });
+}
+module.exports.create_detail=function(req,res)
+{
+    console.log(req.body);
+    User_detail.findOne({second_email:req.body.second_email},function(err,user)//here user is which is entred by the user
+    {
+        if(err){console.log('error in finding user'); return}
+        if(!user)//user doesn't exist
+        {
+            User_detail.create(req.body,function(err,user)//setting stuff in models of user
+            {
+                if(err){console.log('error in signingup the page',err);return}//ye print ho rhi
+                return res.redirect('/user');// after succesful completeion
+
+            });
+
+        }
+        else
+        {
+            return res.redirect('/user');//second email exist
+        }
+    });
+
 }

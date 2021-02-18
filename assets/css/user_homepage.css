@@ -1,0 +1,18 @@
+.edit{
+    margin-top: 74px;
+    /* background-color: ; */
+    /* text-align: center; */
+    margin-left:15%;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    /* max-width: 50%; */
+    cursor: pointer;
+    /* padding :10px; */
+    margin-bottom: 10px;
+  }
