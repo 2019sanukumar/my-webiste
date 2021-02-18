@@ -52,9 +52,9 @@ passport.deserializeUser(function(id,done)
 
 //check if user is authenticated
 
-passport.checkAuthentication=function(res,res,next){
+passport.checkAuthentication=function(req,res,next){
     //if user is signed in , then pass on the request to the next function(controller action)
-    if(require.isAuthenticated()){
+    if(req.isAuthenticated()){
         return next();
     }
 

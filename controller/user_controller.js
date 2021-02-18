@@ -23,3 +23,10 @@ module.exports.sign_up=function(req,res)
 
     });
 }
+module.exports.user_detail=function(req,res)
+{
+    
+    return res.render('user_detail',{
+        title:"user_detail"
+    });
+}

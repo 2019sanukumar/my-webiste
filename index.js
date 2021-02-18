@@ -7,6 +7,9 @@ const db=require('./config/mongoose');//require mongoose config
 const session=require('express-session');//requireing express sesiion afet intalling it
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy'); //fetching up the localstgy
+const MongoStore=require('connect-mongo')(session);
+
+
 
 app.use(express.urlencoded({extended: true}));//for encoding req 
 app.use(cookieParser());//for cookie parser
@@ -30,7 +33,15 @@ app.use(session({
     resave:false,
     cookie:{
         maxAge:(1000*1000*60)
-    }
+    },
+    store:new MongoStore({
+        // for storing up the sessio cookies so that session doesnot get expired up restating the server
+        mongooseConnection:db,
+        autoRemove:'disabled'
+
+    },function(err){
+        console.log(err||'connect-mogodb setup is ok');
+    })
 
 }));
 

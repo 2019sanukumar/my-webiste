@@ -1,8 +1,12 @@
 //importing models so that in it required data can be seacrhed
 const User=require('../models/user');
 
-module.exports.sign_up=function(req,res)
+module.exports.sign_up=function(req,res)//for sign-up page
 {
+    if(req.isAuthenticated()){// if it is authenticated
+        res.redirect('/user');
+    }
+
     return res.render('sign_up',{
         title:"Sign_up"
     });

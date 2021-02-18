@@ -12,6 +12,6 @@ router.use('/user',require('./user'));
 router.use('/post',require('./post'));
 router.use('/sign-in',require('./sign_in'));
 router.use('/sign-up',require('./sign_up'));
-
+router.use('/sign-out',require('./sign_out'));
 
 module.exports=router;
