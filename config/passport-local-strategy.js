@@ -27,7 +27,7 @@ passport.use(new LocalStrategy({//telling passport to use pasportlocal
     }
 ));
 
-//serislisgin the user to decide which key to be kept in cookie
+//serilsing the user to decide which key to be kept in cookie
 passport.serializeUser(function(user,done)
 {
     done(null,user.id);

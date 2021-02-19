@@ -8,9 +8,20 @@ const session=require('express-session');//requireing express sesiion afet intal
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy'); //fetching up the localstgy
 const MongoStore=require('connect-mongo')(session);
+const sassMiddleware=require('node-sass-middleware');
 
 
 
+app.use(sassMiddleware({//for sass middleware
+    src:'/assets/scss',
+    dest:'/assets/css',
+    debug:true,
+    outputStyle:'extended',
+    prefix:'/css'
+
+
+
+}));
 app.use(express.urlencoded({extended: true}));//for encoding req 
 app.use(cookieParser());//for cookie parser
 app.use(express.static('./assets'));//this will tell express to llok for static file in assets folder

@@ -1,4 +1,6 @@
 const User_detail=require('../models/user_detail');
+// const Post=require('../models')
+const Post=require('../models/post');
 
 module.exports.homepage=function(req,res)
 {
@@ -27,6 +29,8 @@ module.exports.sign_up=function(req,res)
 }
 module.exports.user_detail=function(req,res)
 {
+ 
+
     
     return res.render('user_detail',{
         title:"user_detail"
@@ -53,5 +57,34 @@ module.exports.create_detail=function(req,res)
             return res.redirect('/user');//second email exist
         }
     });
+
+}
+
+
+module.exports.homefeed=function(req,res)
+{
+    // Post.find({},function(err,posts){//this will fetch all the post presentt in database in posts 
+
+    //     return res.render('homefeed',{
+    //         title:"HomeFeed",
+    //         Posts:posts // this is seding posts to ejs for getting printed
+    //     });
+    // });
+
+
+
+    //populate the user of each post
+    Post.find({}).populate('user').exec(function(err,posts){// this is findind all the Post from databse and popualting it to the user of given of given post
+
+        return res.render('homefeed',{
+            title:"HomeFeed",
+            Posts:posts // this is seding posts to ejs for getting printed
+        });
+    });
+
+
+
+
+
 
 }

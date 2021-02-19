@@ -1,11 +1,42 @@
- <div class="edit">
+ <link ref="stylesheet" href= "/css/homefeed.css">
  
-    <h1>
-        this is homefeed page
-    </h1>
-    <h1> <%=user.name%></h1>
+    <div class="edit">
+ 
+        <h1>
+            this is homefeed page
+        </h1>
+        <h1> <%=user.name%></h1>
 
-    <h3>
+        <h3>
             <%=user.email%>
-    </h3>
- </div>
+        </h3>
+
+        <section id="feed-post" >
+            <h4>Posts</h4>
+            <form action="/post/user-feed" method="POST">
+                <textarea name="content" cols="30" rows="3" class="fun" placeholder="type here.."></textarea>
+                <input type="submit" value="Posts">
+            </form>
+
+
+            <div  id="postprint">
+                <ul>
+                    <% for ( post of Posts) {%>
+
+                        <li>
+                            <%=post.content %>
+                            
+                        </li>
+                        <small>
+                            <%=post.user.createdAt%>
+                            <%=post.user.name%>
+                            <!-- <%=post.user%> -->
+                        </small>
+                    <%}%>
+                </ul>
+            </div>
+
+
+        </section>
+
+    </div>

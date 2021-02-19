@@ -1,7 +1,17 @@
-module.exports.post=function(req,res)
+const Post=require('../models/post');
+
+
+module.exports.create_post=function(req,res)
 {
-    // return res.end('<h1> this is post -feed<h1>');
-    return res.render('post',{
-        title:"post"
+    console.log(req.body);
+    Post.create({
+        content:req.body.content,
+        user:req.user._id// this user._id will store the id only where as user.id have whole data and this is creted in passport-lpcal strategy in setsutenticated user
+    },function(err,post)
+    {
+        if(err){console.log('error in creating a post');return ;}
+
+        return res .redirect('back');
+
     });
 }
