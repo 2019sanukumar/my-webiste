@@ -16,3 +16,16 @@ input[type=submit] {
     /* padding :10px; */
     margin-bottom: 10px;
   }
+
+  #current_page{
+    min-height: 55px;
+    /* max-height: 75px; */
+    background-color: lightgrey;
+    text-align:  center;
+    font-size: medium;
+    padding-top: 10px;
+    margin-left:-25% ;
+    /* margin-top:-20px */
+    /* display: inline; */
+
+}

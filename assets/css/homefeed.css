@@ -1,11 +1,20 @@
 .edit{
-    margin-top: 55px;
-    margin-left:15%;
-    /* background-color: black; */
+    margin-top:55px;
+    margin-left: 20%;
 }
+#current_page{
+    min-height: 55px;
+    max-height: 75px;
+    background-color: lightgrey;
+    text-align:  center;
+    font-size: medium;
+    padding-top: 10px;
+    margin-left:-25% ;
+    /* display: inline; */
 
+}
 .fun{
-    width: 100%; /* Full width */
+    width: 50%; /* Full width */
     padding: 12px; /* Some padding */ 
     border: 1px solid #ccc; /* Gray border */
     border-radius: 4px; /* Rounded borders */
@@ -13,6 +22,7 @@
     margin-top: 6px; /* Add a top margin */
     margin-bottom: 16px; /* Bottom margin */
     max-width: 50%;
+    /* display: inline; */
     resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
   }
   input[type=submit] {
@@ -22,5 +32,31 @@
     border: none;
     border-radius: 4px;
     /* max-width: 50%; */
+    display: inline;
     cursor: pointer;
+    /* margin-top: -100px; */
+  }
+  .postprint{
+      display: flexbox;
+      max-width: 55%;
+      background-color: lightgrey;
+      border:none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      text-overflow: clip;
+      padding: 20px;
+      
+
+  }
+  .smallcomment {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 12px;
+    border: none;
+    border-radius: 4px;
+    display: inline;
+    cursor: pointer;
+    max-height: 39px;
+    /* text-align: center; */
+
   }

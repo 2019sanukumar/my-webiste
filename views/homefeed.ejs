@@ -1,37 +1,54 @@
- <link ref="stylesheet" href= "/css/homefeed.css">
+<link rel="stylesheet" href="/css/homefeed.css">
+
+
+
  
     <div class="edit">
  
-        <h1>
-            this is homefeed page
-        </h1>
-        <h1> <%=user.name%></h1>
-
-        <h3>
-            <%=user.email%>
-        </h3>
+        <div id="current_page">
+            <p> Home Feed</p>
+            <!-- <p><%=user.name%></p>
+            <p><%=user.email%></p> -->
+        </div>
+        <p><%=user.name%></p>
+        <p><%=user.email%></p>
 
         <section id="feed-post" >
             <h4>Posts</h4>
             <form action="/post/user-feed" method="POST">
                 <textarea name="content" cols="30" rows="3" class="fun" placeholder="type here.."></textarea>
-                <input type="submit" value="Posts">
+                <br><input type="submit" value="Posts">
             </form>
 
 
-            <div  id="postprint">
+            <div  >
                 <ul>
                     <% for ( post of Posts) {%>
+                        <div class="postprint">
 
-                        <li>
-                            <%=post.content %>
-                            
-                        </li>
-                        <small>
-                            <%=post.user.createdAt%>
-                            <%=post.user.name%>
-                            <!-- <%=post.user%> -->
-                        </small>
+                            <ul>
+                                <%=post.content %>
+                                
+                            </ul>
+                            <small>
+                                <%=post.user.createdAt%>
+                                <%=post.user.name%>
+                                
+                            </small>
+                            <div class="post-comments">
+                                <% if(locals.user){%>
+                                    <form action="/comment/create" method="POST">
+                                        <input type="text" name="content" placeholder="type here your comment">
+                                        <input type="hidden" name="post" value="<%=post._id%>" >
+                                        <!-- this for finding this very post in controller -->
+                                        <input type="submit" class="smallcomment" value="Add Comment">
+
+
+                                    </form>
+
+                                <%}%>
+                            </div>
+                        </div>
                     <%}%>
                 </ul>
             </div>
