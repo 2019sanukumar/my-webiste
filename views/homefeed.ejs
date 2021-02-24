@@ -5,26 +5,32 @@
  
     <div class="edit">
  
-        <div id="current_page">
-            <p> Home Feed</p>
-            <!-- <p><%=user.name%></p>
-            <p><%=user.email%></p> -->
-        </div>
-        <p><%=user.name%></p>
-        <p><%=user.email%></p>
-
-        <section id="feed-post" >
-            <h4>Posts</h4>
-            <form action="/post/user-feed" method="POST">
-                <textarea name="content" cols="30" rows="3" class="fun" placeholder="type here.."></textarea>
-                <br><input type="submit" value="Posts">
-            </form>
+        <section >
+            <div class=fun>
+                <p>Posts</p>
+                <!-- <p><%=user.name%></p> -->
+                <!-- <p><%=user.email%></p> -->
+                <form action="/post/user-feed" method="POST">
+                    <textarea name="content" cols="30" rows="3"  placeholder="type here.."></textarea>
+                    <br>
+                    <br>
+                    <input type="submit" value="Posts">
+                </form>
+            </div>
 
 
-            <div  >
+            <div>
                 <ul>
                     <% for ( post of Posts) {%>
                         <div class="postprint">
+                            <% if(locals.user&&locals.user.id == post.user.id){%> 
+                                <!-- this will ensure that post can only be deleted if admin of same post is singed in -->
+                            
+                                <small>
+                                    <a href="/post/destroy/<%=post.id%>"> X</a>
+                                </small>
+
+                            <%}%>
 
                             <ul>
                                 <%=post.content %>
@@ -45,8 +51,31 @@
 
 
                                     </form>
+                                    <small>
+                                        <div class="post-comment_list">
+                                            <ul>
+                                                <%for (comment of post.comments) {%>
+                                                    <% if(locals.user&&locals.user.id == post.user.id){%> 
+                                                        <!-- this will ensure that post can only be deleted if admin of same post is singed in -->
+                                                    
+                                                        <small>
+                                                            <a href="/comment/destroy/<%=comment.id%>"> X</a>
+                                                        </small>
+                        
+                                                    <%}%>
+    
+    
+                                                    <p>
+                                                        <%=comment.content %>
+                                                        
+                                                    </p>
+                                                <%}%>
+                                            </ul>
+                                        </div>
+                                    </small>
 
                                 <%}%>
+                                
                             </div>
                         </div>
                     <%}%>
@@ -54,6 +83,15 @@
             </div>
 
 
+        </section>
+
+        <section id="user-friends">
+            <h4> Friends</h4>
+            <% for(u of all_users) {%>
+                <p>
+                    <a href="/user/about/<%=u.id%>"><%=u.name%></a>
+                </p>
+            <%}%>
         </section>
 
     </div>

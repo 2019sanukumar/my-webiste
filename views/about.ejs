@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/css/about.css">
+<div class="edit">
+
+    <% if(user.id==profile_user.id){%>
+        <form action="/user/user-update/<%=profile_user.id%>" method="POST">
+            <input type="text" name="name" placeholder="your name" value="<%=profile_user.name%>" required>
+            <input type="submit" value="Update">
+
+        </form>
+
+
+    <%}else {%>
+        <ul>
+            <%=profile_user.name%><br>
+            <%=profile_user.email%><br>
+            <%=profile_user.phone%><br>
+            <%=profile_user.designation%><br>
+            <%=profile_user.working_place%>
+        </ul>
+        
+
+
+    <%}%>
+    
+
+    
+
+
+
+</div>
