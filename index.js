@@ -9,8 +9,8 @@ const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy'); //fetching up the localstgy
 const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
-
-
+const flash=require('connect-flash');
+const customMware=require('./config/middleware');
 
 app.use(sassMiddleware({//for sass middleware
     src:'/assets/scss',
@@ -60,7 +60,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser)//this will call middle ware creted in passport local strategy and that will alow us to fetch data of curent signed user in views
-
+app.use(flash());
+app.use(customMware.setFlash);
 //use express router
 app.use('/',require('./routes/index'));//this will go to route for all further query
 

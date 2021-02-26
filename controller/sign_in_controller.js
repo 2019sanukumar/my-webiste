@@ -10,11 +10,14 @@ module.exports.sign_in=function(req,res)//rendering the sign in page
 /// moving to different branch
 module.exports.session=function(req,res)
 {
+    req.flash('success','Logges out Succesfully');
+
     return res.redirect('/user');
    
 }
 module.exports.destroySession=function(req,res){// for signing oout
     req.logout();
+    req.flash('success','logged out sucesfully');
     return res.redirect('/');
 
 }
