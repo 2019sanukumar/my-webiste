@@ -26,7 +26,8 @@ app.use(express.urlencoded({extended: true}));//for encoding req
 app.use(cookieParser());//for cookie parser
 app.use(express.static('./assets'));//this will tell express to llok for static file in assets folder
 
-
+//make the upload pathavalbale to the browser
+app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(expressLayouts);//teeling that use this layout before fetching
 app.set('layout extractStyles',true);//extract syltlesheet from subpages 
 app.set('layout extractScripts',true);//extracting js file from subpages

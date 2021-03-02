@@ -1,4 +1,6 @@
 const User_detail=require('../models/user_detail');
+const fs=require('fs');
+const path=require('path');
 // const Post=require('../models')
 const Post=require('../models/post');
 const User=require('../models/user');
@@ -28,14 +30,41 @@ module.exports.sign_up=function(req,res)
 
     });
 }
-module.exports.user_update=function(req,res)
+module.exports.user_update= async function(req,res)
 {
     if(req.user.id==req.params.id)
     {
-        User.findByIdAndUpdate(req.params.id,req.body,function(err,user)
-        {
+       
+        try{
+            //find user by id first
+            let user=await User.findById(req.params.id);
+            User.uploadAvatar(req,res,function(err){
+                if(err){console.log('error',err);}
+                console.log(req.file);
+                user.name=req.body.name;
+                // user.email=req.body.email;
+                if(req.file)
+                {
+                    //check if user already has avatar
+                    if(user.avatar)
+                    {
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));//foe deleting the current avatar 
+
+                    }
+                    user.avatar=User.avatarPath+'/'+req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+                
+            });
+
+
+        }
+        catch(err){
+            req.flash('error',err);
             return res.redirect('back');
-        });
+
+        }
     }
     else{
         return res.status(401);
