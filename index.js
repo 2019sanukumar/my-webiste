@@ -6,7 +6,10 @@ const expressLayouts=require('express-ejs-layouts');//for layout
 const db=require('./config/mongoose');//require mongoose config
 const session=require('express-session');//requireing express sesiion afet intalling it
 const passport=require('passport');
+
+
 const passportLocal=require('./config/passport-local-strategy'); //fetching up the localstgy
+const passportJWT=require('./config/passport-jwt-strategy');
 const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
