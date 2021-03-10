@@ -3,6 +3,8 @@ const mongoose=require('mongoose');
 const multer=require('multer');//requreing multer
 const path=require('path');
 const AVATAR_PATH=path.join('/uploads/users/avatars');
+
+
 const UserSchema=new mongoose.Schema({
     email:{
         type:String,
@@ -36,6 +38,8 @@ const UserSchema=new mongoose.Schema({
 },{
     timestamps:true
 });
+
+// for multer
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join(__dirname,'..',AVATAR_PATH));
@@ -44,7 +48,7 @@ let storage = multer.diskStorage({
       cb(null, file.fieldname + '-' + Date.now());
     }
   });
-//static method
+//static method which can be used anywhere on the class
 UserSchema.statics.uploadAvatar=multer({storage: storage}).single('avatar');
 UserSchema.statics.avatarPath=AVATAR_PATH;
 

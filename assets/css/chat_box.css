@@ -1,0 +1,23 @@
+#user-chat-box{
+    position: fixed;
+    background-color: blanchedalmond;
+    width: 350px;
+    height: 350px;
+    padding: 5px;
+}
+#chat-message-list{
+    list-style:none;
+    padding:10px;
+    height:70%;
+    background-color: white;
+    overflow: auto;
+}
+.other-message{
+    text-align: left;
+    padding:5px;
+    
+}
+.self-message{
+    text-align: right;
+    padding:5px;
+}

@@ -15,7 +15,11 @@ const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
 const customMware=require('./config/middleware');
-
+// setup the chat serverto be used with socket.io
+const chatServer=require('http').Server(app);
+const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(8000);
+console.log('chat server is listening on port',port);
 app.use(sassMiddleware({//for sass middleware
     src:'/assets/scss',
     dest:'/assets/css',
@@ -31,7 +35,7 @@ app.use(cookieParser());//for cookie parser
 app.use(express.static('./assets'));//this will tell express to llok for static file in assets folder
 
 //make the upload pathavalbale to the browser
-app.use('/uploads',express.static(__dirname+'/uploads'));
+app.use('/uploads',express.static(__dirname + '/uploads'));
 app.use(expressLayouts);//teeling that use this layout before fetching
 app.set('layout extractStyles',true);//extract syltlesheet from subpages 
 app.set('layout extractScripts',true);//extracting js file from subpages

@@ -67,7 +67,7 @@ module.exports.user_update= async function(req,res)
         }
     }
     else{
-        return res.status(401);
+        return res.status(401).send('Unauthorized');
 
     }
  
