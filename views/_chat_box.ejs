@@ -1,30 +1,33 @@
+<link rel="stylesheet" href="css/chat_box.css">
 
 <% if(locals.user){%>
+    <div id="edit">
     
-    <div id="user-chat-box">
-        <ul id="chat-message-list">
-            <li class="other-message">
-                <span>
-                    Other-message
-                </span>
+        <div id="user-chat-box">
+            <ul id="chat-message-list">
+                <li class="other-message">
+                    <span>
+                        Other-message
+                    </span>
 
-            </li>
-            <li class="self-message">
-                <span>
-                    Self  Message
-                </span>
+                </li>
+                <li class="self-message">
+                    <span>
+                        Self Message
+                    </span>
 
-            </li>
+                </li>
 
+            </ul>
+            <div id="chat-message-input-container">
+                <input id="chat-message-input" placeholder="type message here">
+                <button id="send-message">send</button>
+            </div>
 
-
-        </ul>
-        <div id="chat-message-input-container">
-            <input id="chat-message-input" placeholder="type message here">
-            <button id="Send-message">send</button>
         </div>
-
     </div>
 
 
 <%}%>
+
+

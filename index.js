@@ -1,7 +1,8 @@
 const express=require('express');
+// const env=require('./config/environment');
 const cookieParser=require('cookie-parser');//after installing cookie parser
 const app=express();
-const port=5000;
+const port=8000;
 const expressLayouts=require('express-ejs-layouts');//for layout
 const db=require('./config/mongoose');//require mongoose config
 const session=require('express-session');//requireing express sesiion afet intalling it
@@ -16,13 +17,22 @@ const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
 const customMware=require('./config/middleware');
 // setup the chat serverto be used with socket.io
+
+
+
 const chatServer=require('http').Server(app);
 const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(8000);
-console.log('chat server is listening on port',port);
+chatServer.listen(5000);
+console.log('chat server is listening on port 5000');
+const path=require('path');
+
+
 app.use(sassMiddleware({//for sass middleware
     src:'/assets/scss',
+    // src:path.join(__dirname,env.assets_path,'scss'),
+
     dest:'/assets/css',
+    // dest:path.join(__dirname,env.assets_path,'css'),
     debug:true,
     outputStyle:'extended',
     prefix:'/css'
@@ -32,6 +42,7 @@ app.use(sassMiddleware({//for sass middleware
 }));
 app.use(express.urlencoded({extended: true}));//for encoding req 
 app.use(cookieParser());//for cookie parser
+// app.use(express.static("public"));
 app.use(express.static('./assets'));//this will tell express to llok for static file in assets folder
 
 //make the upload pathavalbale to the browser
@@ -48,7 +59,7 @@ app.set('views','./views');
 
 app.use(session({
     name:'backend',
-    secret:'blahblah',
+    secret:'backrev',
     saveUninitialized:false,
     resave:false,
     cookie:{

@@ -1,5 +1,7 @@
 // this is for connecting to database using mongodb
 const mongoose=require('mongoose');
+
+// const env=require('./environment');
 mongoose.connect('mongodb://localhost/back-endrev',{
     useNewUrlParser: true,
     useUnifiedTopology: true,
