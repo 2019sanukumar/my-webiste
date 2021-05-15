@@ -1,5 +1,6 @@
 const express=require('express');
-// const env=require('./config/environment');
+const env=require('./config/environment');
+const logger=require('morgan');
 const cookieParser=require('cookie-parser');//after installing cookie parser
 const app=express();
 const port=8000;
@@ -28,11 +29,11 @@ const path=require('path');
 
 
 app.use(sassMiddleware({//for sass middleware
-    src:'/assets/scss',
-    // src:path.join(__dirname,env.assets_path,'scss'),
+    // src:'/assets/scss',
+    src:path.join(__dirname,env.asset_path,'scss'),
 
-    dest:'/assets/css',
-    // dest:path.join(__dirname,env.assets_path,'css'),
+    // dest:'/assets/css',
+    dest:path.join(__dirname,env.asset_path,'css'),
     debug:true,
     outputStyle:'extended',
     prefix:'/css'
@@ -43,7 +44,7 @@ app.use(sassMiddleware({//for sass middleware
 app.use(express.urlencoded({extended: true}));//for encoding req 
 app.use(cookieParser());//for cookie parser
 // app.use(express.static("public"));
-app.use(express.static('./assets'));//this will tell express to llok for static file in assets folder
+app.use(express.static(env.asset_path));//this will tell express to llok for static file in assets folder
 
 //make the upload pathavalbale to the browser
 app.use('/uploads',express.static(__dirname + '/uploads'));
@@ -55,11 +56,11 @@ app.set('layout extractScripts',true);//extracting js file from subpages
 
 
 app.set('view engine','ejs');//setting up the view enigine
-app.set('views','./views');
+app.set('views','./view');
 
 app.use(session({
     name:'backend',
-    secret:'backrev',
+    secret:env.session_cookie_key,
     saveUninitialized:false,
     resave:false,
     cookie:{

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod_start":"NODE_ENV=production"
   },
   "author": "Sanu",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "express-session": "^1.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.16",
+    "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "node-sass-middleware": "^0.11.0",
     "nodemailer": "^6.5.0",
@@ -26,6 +28,7 @@
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "rotating-file-stream": "^2.1.5",
     "socket.io": "^3.1.2"
   }
 }

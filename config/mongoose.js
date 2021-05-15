@@ -1,8 +1,8 @@
 // this is for connecting to database using mongodb
 const mongoose=require('mongoose');
 
-// const env=require('./environment');
-mongoose.connect('mongodb://localhost/back-endrev',{
+const env=require('./environment');
+mongoose.connect(`mongodb://localhost/${env.db}`,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: true,
