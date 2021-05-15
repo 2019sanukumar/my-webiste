@@ -10,7 +10,7 @@ gulp.task('css',function(done){
     gulp.src('./assets/css/**/*.css')
     .pipe(sass())
     .pipe(cssnano())
-    .pipe(gulp.dest('./assets.css'))
+    .pipe(gulp.dest('./assets.css'));
 
     gulp.src('./assets/**/*.css')
     .pipe(rev())

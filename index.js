@@ -3,6 +3,7 @@ const env=require('./config/environment');
 const logger=require('morgan');
 const cookieParser=require('cookie-parser');//after installing cookie parser
 const app=express();
+require('./config/view-helper')(app);
 const port=8000;
 const expressLayouts=require('express-ejs-layouts');//for layout
 const db=require('./config/mongoose');//require mongoose config
