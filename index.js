@@ -53,7 +53,7 @@ app.set('layout extractStyles',true);//extract syltlesheet from subpages
 app.set('layout extractScripts',true);//extracting js file from subpages
 
 
-
+app.use(logger(env.morgon.mode,env.morgon.options));
 
 app.set('view engine','ejs');//setting up the view enigine
 app.set('views','./view');

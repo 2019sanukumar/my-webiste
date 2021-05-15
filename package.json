@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod_start":"NODE_ENV=production"
+    "prod_start": "NODE_ENV=production"
   },
   "author": "Sanu",
   "license": "ISC",
   "dependencies": {
+    "caniuse-db": "^1.0.30001226",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
@@ -18,6 +19,8 @@
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
+    "gulp-rev": "^9.0.0",
+    "gulp-sass": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.16",
     "morgan": "^1.10.0",
@@ -30,5 +33,9 @@
     "passport-local": "^1.0.0",
     "rotating-file-stream": "^2.1.5",
     "socket.io": "^3.1.2"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cssnano": "^2.1.3"
   }
 }
