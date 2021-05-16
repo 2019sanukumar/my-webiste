@@ -1,0 +1,31 @@
+.edit{
+    margin-top: 74px;
+    /* background-color: ; */
+    /* text-align: center; */
+    margin-left:15%;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    /* max-width: 50%; */
+    cursor: pointer;
+    /* padding :10px; */
+    margin-bottom: 10px;
+  }
+
+  #current_page{
+    min-height: 55px;
+    /* max-height: 75px; */
+    background-color: lightgrey;
+    text-align:  center;
+    font-size: medium;
+    padding-top: 10px;
+    margin-left:-25% ;
+    /* margin-top:-20px */
+    /* display: inline; */
+
+}
