@@ -2,12 +2,12 @@ const { response } = require("express");
 
 {
     // method to sumbit the form for new post using Ajax
-    // console.log('added');
+    console.log('added');
     let createPost=function()
     {
-        let newPostForm=$('#new-post-form');
+        let newPostForm=$('#new-post-form');//getting form data
         newPostForm.submit(function(e){
-            e.preventDefault();
+            e.preventDefault();// preventing deafult
             $.ajax({
                 type:'post',
                 url:'/post/user-feed',
